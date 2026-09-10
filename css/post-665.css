@@ -21,4 +21,6 @@ background-image: linear-gradient(to top,#F2C94C, #C9AB4E);
 
 @media(max-width:767px){
     .mobile-break { display: block; }
+    .elementor-665 .elementor-element.elementor-element-cd934db { --padding-top: 60px !important; }
+    .elementor-665 .elementor-element.elementor-element-cd934db img { max-width: 280px !important; }
 }/* End custom CSS */
