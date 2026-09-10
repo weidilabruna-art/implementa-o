@@ -17,4 +17,8 @@ background-image: linear-gradient(to top,#F2C94C, #C9AB4E);
 
 .btn-h a:hover{
     transform: scale(1.06);
+}
+
+@media(max-width:767px){
+    .mobile-break { display: block; }
 }/* End custom CSS */
