@@ -25,23 +25,29 @@ background-image: linear-gradient(to top,#F2C94C, #C9AB4E);
     .elementor-665 .elementor-element.elementor-element-cd934db img { max-width: 280px !important; }
 }
 
-/* Alinhamento e espaçamento das listas */
+/* Alinhamento e espaçamento das listas - todos os tamanhos */
 .elementor-665 .elementor-element.elementor-element-941a8c2 .elementor-icon-list-item,
 .elementor-665 .elementor-element.elementor-element-674311d .elementor-icon-list-item,
 .elementor-665 .elementor-element.elementor-element-941e069 .elementor-icon-list-item {
+    align-items: flex-start !important;
     margin-bottom: 14px !important;
+}
+.elementor-665 .elementor-element.elementor-element-941a8c2 .elementor-icon-list-icon,
+.elementor-665 .elementor-element.elementor-element-674311d .elementor-icon-list-icon,
+.elementor-665 .elementor-element.elementor-element-941e069 .elementor-icon-list-icon {
+    margin-top: 2px;
+    flex-shrink: 0;
 }
 
 @media(max-width:767px){
-    .elementor-665 .elementor-element.elementor-element-941a8c2 .elementor-icon-list-item,
-    .elementor-665 .elementor-element.elementor-element-674311d .elementor-icon-list-item,
-    .elementor-665 .elementor-element.elementor-element-941e069 .elementor-icon-list-item {
-        align-items: flex-start !important;
-    }
-    .elementor-665 .elementor-element.elementor-element-941a8c2 .elementor-icon-list-icon,
-    .elementor-665 .elementor-element.elementor-element-674311d .elementor-icon-list-icon,
-    .elementor-665 .elementor-element.elementor-element-941e069 .elementor-icon-list-icon {
-        margin-top: 3px;
-        flex-shrink: 0;
-    }
+    .mobile-break { display: block; }
+    .elementor-665 .elementor-element.elementor-element-cd934db { --padding-top: 60px !important; }
+    .elementor-665 .elementor-element.elementor-element-cd934db img { max-width: 280px !important; }
+}
+
+/* Larguras das colunas da seção ec67bc8 no desktop */
+@media(min-width:768px){
+    .elementor-665 .elementor-element.elementor-element-e2b7035 { --width: 35% !important; }
+    .elementor-665 .elementor-element.elementor-element-f86d588 { --width: 45% !important; }
+    .elementor-665 .elementor-element.elementor-element-b52ef47 { --width: 20% !important; }
 }/* End custom CSS */
