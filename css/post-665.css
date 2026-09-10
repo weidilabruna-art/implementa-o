@@ -29,12 +29,19 @@ background-image: linear-gradient(to top,#F2C94C, #C9AB4E);
 .elementor-665 .elementor-element.elementor-element-941a8c2 .elementor-icon-list-item,
 .elementor-665 .elementor-element.elementor-element-674311d .elementor-icon-list-item,
 .elementor-665 .elementor-element.elementor-element-941e069 .elementor-icon-list-item {
-    align-items: flex-start !important;
     margin-bottom: 14px !important;
 }
-.elementor-665 .elementor-element.elementor-element-941a8c2 .elementor-icon-list-icon,
-.elementor-665 .elementor-element.elementor-element-674311d .elementor-icon-list-icon,
-.elementor-665 .elementor-element.elementor-element-941e069 .elementor-icon-list-icon {
-    margin-top: 3px;
-    flex-shrink: 0;
+
+@media(max-width:767px){
+    .elementor-665 .elementor-element.elementor-element-941a8c2 .elementor-icon-list-item,
+    .elementor-665 .elementor-element.elementor-element-674311d .elementor-icon-list-item,
+    .elementor-665 .elementor-element.elementor-element-941e069 .elementor-icon-list-item {
+        align-items: flex-start !important;
+    }
+    .elementor-665 .elementor-element.elementor-element-941a8c2 .elementor-icon-list-icon,
+    .elementor-665 .elementor-element.elementor-element-674311d .elementor-icon-list-icon,
+    .elementor-665 .elementor-element.elementor-element-941e069 .elementor-icon-list-icon {
+        margin-top: 3px;
+        flex-shrink: 0;
+    }
 }/* End custom CSS */
