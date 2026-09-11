@@ -401,56 +401,51 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso à própria rotina e
 				<div class="elementor-widget-container">
 					<h2 class="elementor-heading-title elementor-size-default">Preencha seus dados abaixo</h2>				</div>
 				</div>
-				<div class="elementor-element elementor-element-47bed860 elementor-button-align-stretch elementor-widget elementor-widget-form" data-id="47bed860" data-element_type="widget" data-settings="{" step_next_label":"next","step_previous_label":"previous","button_width":"100","step_type":"number_text","step_icon_shape":"circle"}"="" data-widget_type="form.default">
+				<div class="elementor-element elementor-element-47bed860 elementor-widget" data-id="47bed860" data-element_type="widget">
 				<div class="elementor-widget-container">
-							<form class="elementor-form" method="post" name="Sessão estratéfica">
-			<input type="hidden" name="post_id" value="466">
-			<input type="hidden" name="form_id" value="47bed860">
-			<input type="hidden" name="referer_title" value="Sessao de Implementação">
 
-							<input type="hidden" name="queried_id" value="665">
-			
-			<div class="elementor-form-fields-wrapper elementor-labels-">
-								<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-Nome elementor-col-100 elementor-field-required">
-												<label for="form-field-Nome" class="elementor-field-label elementor-screen-only">
-								Nome							</label>
-														<input size="1" type="text" name="form_fields[Nome]" id="form-field-Nome" class="elementor-field elementor-size-lg  elementor-field-textual" placeholder="Nome" required="required">
-											</div>
-								<div class="elementor-field-type-maskphone_with_ddd elementor-field-group elementor-column elementor-field-group-WhatsApp elementor-col-100 elementor-field-required">
-												<label for="form-field-WhatsApp" class="elementor-field-label elementor-screen-only">
-								WhatsApp com DDD							</label>
-						<input size="1" type="tel" name="form_fields[WhatsApp]" id="form-field-WhatsApp" class="elementor-field elementor-size-lg  elementor-field-textual phone_with_ddd" required="required" placeholder="WhatsApp com DDD">				</div>
-								<div class="elementor-field-type-text elementor-field-group elementor-column elementor-field-group-Instagram elementor-col-100 elementor-field-required">
-												<label for="form-field-Instagram" class="elementor-field-label elementor-screen-only">
-								Instagram							</label>
-														<input size="1" type="text" name="form_fields[Instagram]" id="form-field-Instagram" class="elementor-field elementor-size-lg  elementor-field-textual" placeholder="Seu @ no instagram" required="required">
-											</div>
-								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-utm_source elementor-col-100">
-													<input size="1" type="hidden" name="form_fields[utm_source]" id="form-field-utm_source" class="elementor-field elementor-size-lg  elementor-field-textual" value="ig">
-											</div>
-								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-utm_medium elementor-col-100">
-													<input size="1" type="hidden" name="form_fields[utm_medium]" id="form-field-utm_medium" class="elementor-field elementor-size-lg  elementor-field-textual" value="organico">
-											</div>
-								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-utm_campaign elementor-col-100">
-													<input size="1" type="hidden" name="form_fields[utm_campaign]" id="form-field-utm_campaign" class="elementor-field elementor-size-lg  elementor-field-textual" value="Campanha">
-											</div>
-								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-utm_content elementor-col-100">
-													<input size="1" type="hidden" name="form_fields[utm_content]" id="form-field-utm_content" class="elementor-field elementor-size-lg  elementor-field-textual" value="biografiainstagram">
-											</div>
-								<div class="elementor-field-type-hidden elementor-field-group elementor-column elementor-field-group-utm_term elementor-col-100">
-													<input size="1" type="hidden" name="form_fields[utm_term]" id="form-field-utm_term" class="elementor-field elementor-size-lg  elementor-field-textual">
-											</div>
-								<div class="elementor-field-group elementor-column elementor-field-type-submit elementor-col-100 e-form__buttons">
-					<button class="elementor-button elementor-size-lg elementor-animation-shrink" type="submit">
+				<!-- FORMULÁRIO CUSTOMIZADO FORMINIT + WHATSAPP -->
+				<div id="audax-form-content">
+				<form id="audax-form" onsubmit="return false;" style="display:flex;flex-direction:column;gap:12px;">
+					<input type="text" id="audax-nome" placeholder="Nome completo" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
+					<input type="tel" id="audax-whatsapp" placeholder="WhatsApp com DDD" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
+					<input type="text" id="audax-instagram" placeholder="Seu @ no Instagram" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
+					<input type="email" id="audax-email" placeholder="Seu melhor e-mail" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
+					<select id="audax-faturamento" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
+						<option value="" disabled selected>Qual sua média de faturamento mensal?</option>
+						<option value="Até R$ 5 Mil">Até R$ 5 Mil</option>
+						<option value="De R$ 5 a R$ 10 Mil">De R$ 5 a R$ 10 Mil</option>
+						<option value="De R$ 10 a R$ 20 Mil">De R$ 10 a R$ 20 Mil</option>
+						<option value="De R$ 20 a R$ 50 Mil">De R$ 20 a R$ 50 Mil</option>
+						<option value="De R$ 50 a R$ 100 Mil">De R$ 50 a R$ 100 Mil</option>
+						<option value="Acima de R$ 100 Mil">Acima de R$ 100 Mil</option>
+					</select>
+					<button type="submit" id="audax-submit-btn" class="elementor-button elementor-size-lg" style="width:100%;cursor:pointer;margin-top:4px;border:none;">
 						<span class="elementor-button-content-wrapper">
-																						<span class="elementor-button-text">APLICAR PARA A IMPLEMENTAÇÃO</span>
-													</span>
+							<span class="elementor-button-text">APLICAR PARA A IMPLEMENTAÇÃO</span>
+						</span>
 					</button>
+					<div id="audax-form-notice" style="display:none;color:#E9AC6F;font-size:13px;text-align:center;">Preencha todos os campos para continuar.</div>
+				</form>
 				</div>
-			</div>
-		</form>
-						</div>
+
+				<!-- TELA DE SUCESSO -->
+				<div id="audax-success-content" style="display:none;text-align:center;padding:20px 0;">
+					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:60px;margin:0 auto 16px;display:block;color:#E9AC6F;">
+						<path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					</svg>
+					<h3 style="color:#fff;margin-bottom:8px;">Aplicação enviada!</h3>
+					<p style="color:#ccc;margin-bottom:16px;">Aguarde, estamos te direcionando para o WhatsApp...</p>
+					<a id="audax-wa-btn" href="#" target="_blank" class="elementor-button elementor-size-lg" style="display:inline-block;text-decoration:none;">
+						<span class="elementor-button-content-wrapper">
+							<span class="elementor-button-text">Continuar no WhatsApp</span>
+						</span>
+					</a>
 				</div>
+
+				</div>
+				</div>
+
 				<div class="elementor-element elementor-element-f96ab1f elementor-widget elementor-widget-text-editor" data-id="f96ab1f" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
 									<p></p>								</div>
@@ -542,4 +537,77 @@ images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.adde
 if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async="" src="js/lazyload.min.js"></script><script>function lazyLoadThumb(e,alt){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';t=t.replace('alt=""','alt="'+alt+'"');return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id,a[t].dataset.alt),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script>	<script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode-wpr",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script>
 
 
-<span id="elementor-device-mode-wpr" class="elementor-screen-only"></span></body></html><!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
+<span id="elementor-device-mode-wpr" class="elementor-screen-only"></span>
+
+<script>
+// ===== CONFIGURAÇÃO =====
+const AUDAX_WA_NUMBER = '5521996768132';
+const AUDAX_FORMINIT_URL = 'https://forminit.com/f/xuln4myvz9f';
+
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('audax-form');
+  if (!form) return;
+
+  const formContent = document.getElementById('audax-form-content');
+  const successContent = document.getElementById('audax-success-content');
+  const formNotice = document.getElementById('audax-form-notice');
+  const waBtn = document.getElementById('audax-wa-btn');
+  const submitBtn = document.getElementById('audax-submit-btn');
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const nome = document.getElementById('audax-nome').value.trim();
+    const whatsapp = document.getElementById('audax-whatsapp').value.trim();
+    const instagram = document.getElementById('audax-instagram').value.trim();
+    const email = document.getElementById('audax-email').value.trim();
+    const faturamento = document.getElementById('audax-faturamento').value;
+
+    if (!nome || !whatsapp || !instagram || !email || !faturamento) {
+      formNotice.style.display = 'block';
+      return;
+    }
+    formNotice.style.display = 'none';
+
+    // Desabilita botão
+    submitBtn.disabled = true;
+    submitBtn.querySelector('.elementor-button-text').textContent = 'Enviando...';
+
+    // Envia ao Forminit
+    try {
+      const fd = new FormData();
+      fd.append('fi-text-NomeCompleto', nome);
+      fd.append('fi-text-WhatsApp', whatsapp);
+      fd.append('fi-text-Instagram', instagram);
+      fd.append('fi-text-Email', email);
+      fd.append('fi-text-FaturamentoMensal', faturamento);
+      await fetch(AUDAX_FORMINIT_URL, { method: 'POST', headers: { 'Accept': 'application/json' }, body: fd });
+    } catch(err) {
+      console.warn('Forminit error:', err);
+    }
+
+    // Monta mensagem WhatsApp
+    const msg = [
+      '*IMPLEMENTAÇÃO AUDAX – NOVA APLICAÇÃO*',
+      '',
+      `*Nome:* ${nome}`,
+      `*WhatsApp:* ${whatsapp}`,
+      `*Instagram:* ${instagram}`,
+      `*E-mail:* ${email}`,
+      `*Faturamento mensal:* ${faturamento}`
+    ].join('\n');
+
+    const waUrl = `https://wa.me/${AUDAX_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+    waBtn.href = waUrl;
+
+    // Mostra tela de sucesso
+    formContent.style.display = 'none';
+    successContent.style.display = 'block';
+
+    // Redireciona automaticamente após 1.5s
+    setTimeout(function() { window.location.href = waUrl; }, 1500);
+  });
+});
+</script>
+
+</body></html><!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me -->
