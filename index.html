@@ -542,45 +542,68 @@ images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.adde
 if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async="" src="js/lazyload.min.js"></script><script>function lazyLoadThumb(e,alt){var t='<img data-lazy-src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"><noscript><img src="https://i.ytimg.com/vi/ID/hqdefault.jpg" alt="" width="480" height="360"></noscript>',a='<button class="play" aria-label="play Youtube video"></button>';t=t.replace('alt=""','alt="'+alt+'"');return t.replace("ID",e)+a}function lazyLoadYoutubeIframe(){var e=document.createElement("iframe"),t="ID?autoplay=1";t+=0===this.parentNode.dataset.query.length?'':'&'+this.parentNode.dataset.query;e.setAttribute("src",t.replace("ID",this.parentNode.dataset.src)),e.setAttribute("frameborder","0"),e.setAttribute("allowfullscreen","1"),e.setAttribute("allow", "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"),this.parentNode.parentNode.replaceChild(e,this.parentNode)}document.addEventListener("DOMContentLoaded",function(){var e,t,p,a=document.getElementsByClassName("rll-youtube-player");for(t=0;t<a.length;t++)e=document.createElement("div"),e.setAttribute("data-id",a[t].dataset.id),e.setAttribute("data-query", a[t].dataset.query),e.setAttribute("data-src", a[t].dataset.src),e.innerHTML=lazyLoadThumb(a[t].dataset.id,a[t].dataset.alt),a[t].appendChild(e),p=e.querySelector('.play'),p.onclick=lazyLoadYoutubeIframe});</script>	<script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode-wpr",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script>
 
 
+<style>
+/* Popup - esconde e posiciona como overlay fixo */
+[data-elementor-id="466"].elementor-location-popup {
+  display: none !important;
+  position: fixed !important;
+  top: 0 !important; left: 0 !important;
+  width: 100% !important; height: 100% !important;
+  z-index: 100000 !important;
+  background: rgba(0,0,0,0.78) !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow-y: auto !important;
+  padding: 20px !important;
+  box-sizing: border-box !important;
+}
+[data-elementor-id="466"].elementor-location-popup.audax-popup-visible {
+  display: flex !important;
+}
+[data-elementor-id="466"].elementor-location-popup > .elementor-element {
+  max-width: 380px !important;
+  width: 100% !important;
+  margin: auto !important;
+}
+</style>
 <span id="elementor-device-mode-wpr" class="elementor-screen-only"></span>
 
 <script>
-// Abre o popup do Elementor ao clicar em qualquer botão com ação de popup
-document.addEventListener('click', function(e) {
-  var btn = e.target.closest('a[href*="elementor-action"]');
-  if (!btn) return;
-  e.preventDefault();
-  e.stopPropagation();
-
-  // Tenta usar a API do Elementor se disponível
-  if (window.elementorFrontend && window.elementorFrontend.utils && window.elementorFrontend.utils.popup) {
-    window.elementorFrontend.utils.popup.showPopup({ id: '466' });
-    return;
-  }
-
-  // Fallback: manipula DOM diretamente
-  var popup = document.querySelector('.elementor-location-popup, [data-elementor-id="466"]');
-  var overlay = document.querySelector('.elementor-popup-modal-bg, .dialog-lightbox-close-button');
+// Abre o popup como overlay fixo
+function audaxOpenPopup() {
+  var popup = document.querySelector('[data-elementor-id="466"].elementor-location-popup');
+  if (popup) { popup.classList.add('audax-popup-visible'); document.body.style.overflow='hidden'; }
+}
+function audaxClosePopup() {
+  var popup = document.querySelector('[data-elementor-id="466"].elementor-location-popup');
   if (popup) {
-    popup.style.display = 'block';
-    popup.style.visibility = 'visible';
-    popup.style.opacity = '1';
-    popup.style.zIndex = '9999';
-    popup.classList.add('elementor-popup--show');
-    document.body.classList.add('elementor-popup-modal-open');
+    popup.classList.remove('audax-popup-visible');
+    document.body.style.overflow='';
+    // Reset form
+    var form = document.getElementById('audax-form');
+    if(form) form.reset();
+    var fc = document.getElementById('audax-form-content');
+    var sc = document.getElementById('audax-success-content');
+    var fh = document.getElementById('audax-form-header');
+    var btn = document.getElementById('audax-submit-btn');
+    if(fc) fc.style.display='';
+    if(sc) sc.style.display='none';
+    if(fh) fh.style.display='';
+    if(btn) { btn.disabled=false; var t=btn.querySelector('.elementor-button-text'); if(t) t.textContent='ENVIAR'; }
   }
-});
+}
 
-// Fecha popup ao clicar no fundo escuro
 document.addEventListener('click', function(e) {
-  if (e.target.classList.contains('dialog-lightbox-close-button') ||
-      e.target.closest('.dialog-lightbox-close-button') ||
-      e.target.classList.contains('elementor-popup-modal-bg')) {
-    var popup = document.querySelector('.elementor-location-popup, [data-elementor-id="466"]');
-    if (popup) {
-      popup.style.display = 'none';
-      document.body.classList.remove('elementor-popup-modal-open');
-    }
+  // Abre popup ao clicar em botão de ação
+  var btn = e.target.closest('a[href*="elementor-action"]');
+  if (btn) { e.preventDefault(); e.stopPropagation(); audaxOpenPopup(); return; }
+
+  // Fecha ao clicar no overlay (fora do card) ou no X
+  var popup = document.querySelector('[data-elementor-id="466"].elementor-location-popup');
+  if (popup && popup.classList.contains('audax-popup-visible')) {
+    var card = popup.querySelector('.elementor-element');
+    var isClose = e.target.closest('.dialog-lightbox-close-button, .elementor-popup-modal-bg');
+    if (isClose || (card && !card.contains(e.target))) { audaxClosePopup(); }
   }
 });
 </script>
