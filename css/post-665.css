@@ -74,20 +74,17 @@ background-image: linear-gradient(to top,#F2C94C, #C9AB4E);
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
-        display: flex !important;
-        align-items: stretch !important;
-        justify-content: stretch !important;
+        min-height: 500px !important;
+        align-self: stretch !important;
+        background-image: url('../images/ima1.png') !important;
+        background-size: cover !important;
+        background-position: center top !important;
+        background-repeat: no-repeat !important;
         padding: 0 !important;
         overflow: hidden !important;
     }
     .elementor-665 .elementor-element.elementor-element-b52ef47 img {
-        width: 100% !important;
-        height: 100% !important;
-        max-width: 100% !important;
-        object-fit: cover !important;
-        object-position: center top !important;
-        border-radius: 0 !important;
-        display: block !important;
+        display: none !important;
     }
 }
 @media(max-width:767px){
