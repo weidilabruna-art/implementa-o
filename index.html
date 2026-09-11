@@ -395,7 +395,7 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso à própria rotina e
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-4aafc0f2 elementor-widget elementor-widget-image" data-id="4aafc0f2" data-element_type="widget" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img src="images/AUDAX IMPLEMENTAÇÃO.png" alt="Audax Implementação" style="max-width: 100%; height: auto;" />															</div>
+															<img src="images/audax-logo.png" alt="Audax Implementação" style="max-width: 100%; height: auto;" />															</div>
 				</div>
 				<div class="elementor-element elementor-element-6bc57aee elementor-widget elementor-widget-heading" data-id="6bc57aee" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
@@ -406,12 +406,18 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso à própria rotina e
 
 				<!-- FORMULÁRIO CUSTOMIZADO FORMINIT + WHATSAPP -->
 				<div id="audax-form-content">
-				<form id="audax-form" onsubmit="return false;" style="display:flex;flex-direction:column;gap:12px;">
-					<input type="text" id="audax-nome" placeholder="Nome completo" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
-					<input type="tel" id="audax-whatsapp" placeholder="WhatsApp com DDD" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
-					<input type="text" id="audax-instagram" placeholder="Seu @ no Instagram" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
-					<input type="email" id="audax-email" placeholder="Seu melhor e-mail" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
-					<select id="audax-faturamento" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:15px;box-sizing:border-box;">
+				<form id="audax-form" style="display:flex;flex-direction:column;gap:12px;">
+					<input type="text" id="audax-nome" placeholder="Nome completo" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px;box-sizing:border-box;">
+					
+					<div style="position: relative; display: flex; align-items: center; background: #1a1a1a; border: 1px solid #555; border-radius: 4px;">
+						<div style="padding: 0 10px; border-right: 1px solid #555; font-size: 16px;">🇧🇷 ▾</div>
+						<input type="tel" id="audax-whatsapp" placeholder="WhatsApp com DDD" required style="width:100%;padding:12px 16px;border:none;background:transparent;color:#fff;font-size:16px;box-sizing:border-box;outline:none;">
+					</div>
+
+					<input type="text" id="audax-instagram" placeholder="Seu @ no Instagram" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px;box-sizing:border-box;">
+					<input type="email" id="audax-email" placeholder="Seu melhor e-mail" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px;box-sizing:border-box;">
+					
+					<select id="audax-faturamento" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px;box-sizing:border-box;">
 						<option value="" disabled selected>Qual sua média de faturamento mensal?</option>
 						<option value="Até R$ 5 Mil">Até R$ 5 Mil</option>
 						<option value="De R$ 5 a R$ 10 Mil">De R$ 5 a R$ 10 Mil</option>
@@ -422,7 +428,7 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso à própria rotina e
 					</select>
 					<button type="submit" id="audax-submit-btn" class="elementor-button elementor-size-lg" style="width:100%;cursor:pointer;margin-top:4px;border:none;">
 						<span class="elementor-button-content-wrapper">
-							<span class="elementor-button-text">APLICAR PARA A IMPLEMENTAÇÃO</span>
+							<span class="elementor-button-text">ENVIAR</span>
 						</span>
 					</button>
 					<div id="audax-form-notice" style="display:none;color:#E9AC6F;font-size:13px;text-align:center;">Preencha todos os campos para continuar.</div>
@@ -544,18 +550,16 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
 const AUDAX_WA_NUMBER = '5521996768132';
 const AUDAX_FORMINIT_URL = 'https://forminit.com/f/xuln4myvz9f';
 
-document.addEventListener('DOMContentLoaded', function() {
-  const form = document.getElementById('audax-form');
-  if (!form) return;
-
-  const formContent = document.getElementById('audax-form-content');
-  const successContent = document.getElementById('audax-success-content');
-  const formNotice = document.getElementById('audax-form-notice');
-  const waBtn = document.getElementById('audax-wa-btn');
-  const submitBtn = document.getElementById('audax-submit-btn');
-
-  form.addEventListener('submit', async function(e) {
+// Use event delegation to ensure event listeners work even if the popup is re-rendered
+document.addEventListener('submit', async function(e) {
+  if (e.target && e.target.id === 'audax-form') {
     e.preventDefault();
+
+    const formNotice = document.getElementById('audax-form-notice');
+    const submitBtn = document.getElementById('audax-submit-btn');
+    const formContent = document.getElementById('audax-form-content');
+    const successContent = document.getElementById('audax-success-content');
+    const waBtn = document.getElementById('audax-wa-btn');
 
     const nome = document.getElementById('audax-nome').value.trim();
     const whatsapp = document.getElementById('audax-whatsapp').value.trim();
@@ -564,14 +568,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const faturamento = document.getElementById('audax-faturamento').value;
 
     if (!nome || !whatsapp || !instagram || !email || !faturamento) {
-      formNotice.style.display = 'block';
+      if (formNotice) formNotice.style.display = 'block';
       return;
     }
-    formNotice.style.display = 'none';
+    if (formNotice) formNotice.style.display = 'none';
 
     // Desabilita botão
-    submitBtn.disabled = true;
-    submitBtn.querySelector('.elementor-button-text').textContent = 'Enviando...';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      const btnText = submitBtn.querySelector('.elementor-button-text');
+      if (btnText) btnText.textContent = 'Enviando...';
+    }
 
     // Envia ao Forminit
     try {
@@ -598,15 +605,15 @@ document.addEventListener('DOMContentLoaded', function() {
     ].join('\n');
 
     const waUrl = `https://wa.me/${AUDAX_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
-    waBtn.href = waUrl;
+    if (waBtn) waBtn.href = waUrl;
 
     // Mostra tela de sucesso
-    formContent.style.display = 'none';
-    successContent.style.display = 'block';
+    if (formContent) formContent.style.display = 'none';
+    if (successContent) successContent.style.display = 'block';
 
     // Redireciona automaticamente após 1.5s
     setTimeout(function() { window.location.href = waUrl; }, 1500);
-  });
+  }
 });
 </script>
 
