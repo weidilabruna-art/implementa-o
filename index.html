@@ -669,12 +669,16 @@ document.addEventListener('submit', async function(e) {
 
     // Envia ao Make (mensagem automática)
     try {
+      // Remove tudo que não é dígito e adiciona 55 se necessário
+      var whatsappLimpo = whatsapp.replace(/\D/g, '');
+      if (!whatsappLimpo.startsWith('55')) whatsappLimpo = '55' + whatsappLimpo;
+
       await fetch('https://hook.us2.make.com/y8huh1n4n6u8lnneqd6b8vwqkliik9ts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           nome: nome,
-          whatsapp: whatsapp,
+          whatsapp: whatsappLimpo,
           instagram: instagram,
           email: email,
           faturamento: faturamento
