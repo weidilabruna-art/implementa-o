@@ -667,6 +667,23 @@ document.addEventListener('submit', async function(e) {
       console.warn('Forminit error:', err);
     }
 
+    // Envia ao Make (mensagem automática)
+    try {
+      await fetch('https://hook.us2.make.com/y8huh1n4n6u8lnneqd6b8vwqkliik9ts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: nome,
+          whatsapp: whatsapp,
+          instagram: instagram,
+          email: email,
+          faturamento: faturamento
+        })
+      });
+    } catch(err) {
+      console.warn('Make webhook error:', err);
+    }
+
     // Monta mensagem WhatsApp
     const msg = [
       'Olá vim do site e gostaria de saber mais sobre a implementação Audax, esses são meus dados:',
