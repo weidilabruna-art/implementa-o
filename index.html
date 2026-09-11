@@ -550,9 +550,10 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
 <style>
 .iti { width: 100%; display: block; }
 .iti--container { z-index: 2147483647 !important; }
-.iti__country-list { background-color: #1a1a1a !important; color: #fff !important; border: 1px solid #555 !important; }
+.iti__country-list { background-color: #1a1a1a !important; color: #fff !important; border: 1px solid #555 !important; max-height: 220px !important; overflow-y: auto !important; }
 .iti__country-name, .iti__dial-code { color: #fff !important; }
 .iti__divider { border-bottom: 1px solid #555 !important; }
+.iti__search-input { background: #111 !important; color: #fff !important; border: 1px solid #555 !important; padding: 6px 10px !important; width: 100%; box-sizing: border-box; font-size: 14px; }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <script>
@@ -578,8 +579,17 @@ function initIti() {
       initialCountry: "br",
       preferredCountries: ["br", "pt", "us"],
       dropdownContainer: document.body,
+      searchCountries: true,
       utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
     });
+
+    // Impede que cliques no dropdown das bandeiras fechem o popup do Elementor
+    document.addEventListener('click', function(e) {
+      const itiContainer = document.querySelector('.iti--container');
+      if (itiContainer && itiContainer.contains(e.target)) {
+        e.stopImmediatePropagation();
+      }
+    }, true);
 
     waInput.addEventListener('input', function() {
       this.value = this.value.replace(/[^\d\+\s\-\(\)]/g, '');
