@@ -411,9 +411,7 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso à própria rotina e
 				<form id="audax-form" style="display:flex;flex-direction:column;gap:12px;">
 					<input type="text" id="audax-nome" placeholder="Nome completo" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 					
-					<div style="width: 100%;">
-						<input type="tel" id="audax-whatsapp" placeholder="WhatsApp" required style="width:100%;padding:12px 16px 12px 60px !important;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
-					</div>
+					<input type="tel" id="audax-whatsapp" placeholder="Seu WhatsApp com DDD" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 
 					<input type="text" id="audax-instagram" placeholder="Seu @ no Instagram" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 					<input type="email" id="audax-email" placeholder="Seu melhor e-mail" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
@@ -546,75 +544,10 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
 
 <span id="elementor-device-mode-wpr" class="elementor-screen-only"></span>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/css/intlTelInput.css">
-<style>
-.iti { width: 100%; display: block; }
-.iti--container { z-index: 2147483647 !important; }
-.iti__country-list { background-color: #1a1a1a !important; color: #fff !important; border: 1px solid #555 !important; max-height: 220px !important; overflow-y: auto !important; }
-.iti__country-name, .iti__dial-code { color: #fff !important; }
-.iti__divider { border-bottom: 1px solid #555 !important; }
-.iti__search-input { background: #111 !important; color: #fff !important; border: 1px solid #555 !important; padding: 6px 10px !important; width: 100%; box-sizing: border-box; font-size: 14px; }
-</style>
-<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <script>
 // ===== CONFIGURAÇÃO =====
 const AUDAX_WA_NUMBER = '5521996768132';
 const AUDAX_FORMINIT_URL = 'https://forminit.com/f/xuln4myvz9f';
-
-let audaxIti = null;
-let currentWaInput = null;
-
-// Initialize intl-tel-input reliably
-function initIti() {
-  const waInput = document.getElementById('audax-whatsapp');
-  
-  // Se o input existe, mas é diferente do que inicializamos antes (ex: Elementor recriou o popup)
-  if (waInput && waInput !== currentWaInput) {
-    if (audaxIti) {
-      audaxIti.destroy(); // Destroi a instância anterior
-    }
-    
-    currentWaInput = waInput;
-    audaxIti = window.intlTelInput(waInput, {
-      initialCountry: "br",
-      preferredCountries: ["br", "pt", "us"],
-      dropdownContainer: document.body,
-      searchCountries: true,
-      utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/utils.js"
-    });
-
-    // Impede que cliques no dropdown das bandeiras fechem o popup do Elementor
-    document.addEventListener('click', function(e) {
-      const itiContainer = document.querySelector('.iti--container');
-      if (itiContainer && itiContainer.contains(e.target)) {
-        e.stopImmediatePropagation();
-      }
-    }, true);
-
-    waInput.addEventListener('input', function() {
-      this.value = this.value.replace(/[^\d\+\s\-\(\)]/g, '');
-      if(this.value.length > 20) this.value = this.value.slice(0, 20);
-    });
-  }
-}
-
-document.addEventListener('DOMContentLoaded', initIti);
-
-// Usa MutationObserver para detectar quando o popup do Elementor insere o form no DOM
-const observer = new MutationObserver(function(mutations) {
-  for (let mutation of mutations) {
-    if (mutation.addedNodes.length) {
-      const waInput = document.getElementById('audax-whatsapp');
-      if (waInput && waInput !== currentWaInput) {
-        initIti();
-      }
-    }
-  }
-});
-observer.observe(document.body, { childList: true, subtree: true });
-
-// Backup fall-back
-setInterval(initIti, 1000);
 
 // Use event delegation to ensure event listeners work even if the popup is re-rendered
 document.addEventListener('submit', async function(e) {
