@@ -409,16 +409,16 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso à própria rotina e
 				<!-- FORMULÁRIO CUSTOMIZADO FORMINIT + WHATSAPP -->
 				<div id="audax-form-content">
 				<form id="audax-form" style="display:flex;flex-direction:column;gap:12px;">
-					<input type="text" id="audax-nome" placeholder="Nome completo" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;">
+					<input type="text" id="audax-nome" placeholder="Nome completo" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 					
 					<div style="width: 100%;">
-						<input type="tel" id="audax-whatsapp" placeholder="WhatsApp" required style="width:100%;padding:12px 16px 12px 60px !important;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;">
+						<input type="tel" id="audax-whatsapp" placeholder="WhatsApp" required style="width:100%;padding:12px 16px 12px 60px !important;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 					</div>
 
-					<input type="text" id="audax-instagram" placeholder="Seu @ no Instagram" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;">
-					<input type="email" id="audax-email" placeholder="Seu melhor e-mail" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;">
+					<input type="text" id="audax-instagram" placeholder="Seu @ no Instagram" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
+					<input type="email" id="audax-email" placeholder="Seu melhor e-mail" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 					
-					<select id="audax-faturamento" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;">
+					<select id="audax-faturamento" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 						<option value="" disabled selected>Qual sua média de faturamento mensal?</option>
 						<option value="Até R$ 5 Mil">Até R$ 5 Mil</option>
 						<option value="De R$ 5 a R$ 10 Mil">De R$ 5 a R$ 10 Mil</option>
@@ -427,7 +427,7 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso à própria rotina e
 						<option value="De R$ 50 a R$ 100 Mil">De R$ 50 a R$ 100 Mil</option>
 						<option value="Acima de R$ 100 Mil">Acima de R$ 100 Mil</option>
 					</select>
-					<button type="submit" id="audax-submit-btn" class="elementor-button elementor-size-lg" style="width:100%;cursor:pointer;margin-top:4px;border:none;">
+					<button type="submit" id="audax-submit-btn" class="elementor-button elementor-size-lg" style="width:100%;cursor:pointer;margin-top:4px;border:none;touch-action:manipulation;">
 						<span class="elementor-button-content-wrapper">
 							<span class="elementor-button-text">ENVIAR</span>
 						</span>
@@ -560,11 +560,19 @@ const AUDAX_WA_NUMBER = '5521996768132';
 const AUDAX_FORMINIT_URL = 'https://forminit.com/f/xuln4myvz9f';
 
 let audaxIti = null;
+let currentWaInput = null;
 
-// Initialize intl-tel-input when the input is available
+// Initialize intl-tel-input reliably
 function initIti() {
   const waInput = document.getElementById('audax-whatsapp');
-  if (waInput && !audaxIti) {
+  
+  // Se o input existe, mas é diferente do que inicializamos antes (ex: Elementor recriou o popup)
+  if (waInput && waInput !== currentWaInput) {
+    if (audaxIti) {
+      audaxIti.destroy(); // Destroi a instância anterior
+    }
+    
+    currentWaInput = waInput;
     audaxIti = window.intlTelInput(waInput, {
       initialCountry: "br",
       preferredCountries: ["br", "pt", "us"],
@@ -573,16 +581,28 @@ function initIti() {
     });
 
     waInput.addEventListener('input', function() {
-      // Allow only numbers, plus, space, dash, parens
       this.value = this.value.replace(/[^\d\+\s\-\(\)]/g, '');
-      // Restrict max length to avoid infinite typing
       if(this.value.length > 20) this.value = this.value.slice(0, 20);
     });
   }
 }
 
 document.addEventListener('DOMContentLoaded', initIti);
-// In case Elementor popup loads it later
+
+// Usa MutationObserver para detectar quando o popup do Elementor insere o form no DOM
+const observer = new MutationObserver(function(mutations) {
+  for (let mutation of mutations) {
+    if (mutation.addedNodes.length) {
+      const waInput = document.getElementById('audax-whatsapp');
+      if (waInput && waInput !== currentWaInput) {
+        initIti();
+      }
+    }
+  }
+});
+observer.observe(document.body, { childList: true, subtree: true });
+
+// Backup fall-back
 setInterval(initIti, 1000);
 
 // Use event delegation to ensure event listeners work even if the popup is re-rendered
