@@ -8,6 +8,14 @@
     border-style: solid;
     border-image: linear-gradient(to right, transparent, #212121, transparent) 1;
 }/* End custom CSS */
+.mobile-break {
+    display: none;
+}
+@media (max-width: 767px) {
+    .mobile-break {
+        display: inline;
+    }
+}
 /* Start custom CSS */pc {
 background-image: linear-gradient(to top,#F2C94C, #C9AB4E);
   background-clip: text;
