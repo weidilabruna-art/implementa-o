@@ -51,3 +51,80 @@ background-image: linear-gradient(to top,#F2C94C, #C9AB4E);
     .elementor-665 .elementor-element.elementor-element-f86d588 { --width: 45% !important; }
     .elementor-665 .elementor-element.elementor-element-b52ef47 { --width: 20% !important; }
 }/* End custom CSS */
+
+/* ===== POPUP FORM CUSTOMIZADO ===== */
+
+/* Logo no popup - tamanho controlado */
+.elementor-466 .elementor-element.elementor-element-4aafc0f2 img {
+    max-width: 220px !important;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+/* Botão do formulário customizado - full width e estilo correto */
+#audax-submit-btn {
+    width: 100% !important;
+    display: block !important;
+    background-color: transparent !important;
+    background-image: linear-gradient(122deg, #F2C94C 0%, #C9AB4E 100%) !important;
+    color: #292929 !important;
+    fill: #292929 !important;
+    font-family: "Aleo", Sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    border-radius: 3px !important;
+    padding: 15px 20px !important;
+    border: none !important;
+    cursor: pointer !important;
+    letter-spacing: 0.5px;
+}
+
+#audax-submit-btn .elementor-button-text {
+    color: #292929 !important;
+}
+
+#audax-submit-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Campos do formulário */
+#audax-form input,
+#audax-form select {
+    background: #1a1a1a !important;
+    border: 1px solid #444 !important;
+    color: #fff !important;
+    border-radius: 4px !important;
+    padding: 13px 16px !important;
+    font-size: 15px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    outline: none !important;
+    transition: border-color 0.2s;
+}
+
+#audax-form input:focus,
+#audax-form select:focus {
+    border-color: #C9AB4E !important;
+}
+
+#audax-form select option {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Botão WhatsApp tela de sucesso */
+#audax-wa-btn {
+    background-color: transparent !important;
+    background-image: linear-gradient(122deg, #F2C94C 0%, #C9AB4E 100%) !important;
+    color: #292929 !important;
+    font-family: "Aleo", Sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 700 !important;
+    text-transform: uppercase !important;
+    border-radius: 3px !important;
+    padding: 15px 30px !important;
+}
