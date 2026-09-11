@@ -1,14 +1,14 @@
-﻿<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.4",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let r=e.getAttribute("data-rocket-src");if(r&&0!==r.indexOf("data:")){0===r.indexOf("//")&&(r=location.protocol+r);try{let i=new URL(r).origin;i!==location.origin&&t.push({src:i,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(n){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._pendingWebpackRequests(this),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){if(await this._littleBreath(),!0===t.noModule&&"noModule"in HTMLScriptElement.prototype){t.setAttribute("data-rocket-status","skipped");return}return new Promise(navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(){let t={};function e(e,r){!function e(r){!t[r]&&(t[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.remove.apply(r,arguments)});function i(e){return t[r].eventsToRewrite.indexOf(e)>=0?"rocket-"+e:e}}(e),t[e].eventsToRewrite.push(r)}function r(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}e(document,"DOMContentLoaded"),e(window,"DOMContentLoaded"),e(window,"load"),e(window,"pageshow"),e(document,"readystatechange"),r(document,"onreadystatechange"),r(window,"onload"),r(window,"onpageshow")}_delayJQueryReady(t){let e;function r(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}function i(i){if(i&&i.fn&&!t.allJQueries.includes(i)){i.fn.ready=i.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(i):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(i)),i([])};let n=i.fn.on;i.fn.on=i.fn.init.prototype.on=function(){return this[0]===window&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=r(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{let e=arguments[0][t];delete arguments[0][t],arguments[0][r(t)]=e})),n.apply(this,arguments),this},t.allJQueries.push(i)}e=i}i(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){i(t)}})}async _pendingWebpackRequests(t){let e=document.querySelector("script[data-webpack]");async function r(){return new Promise(t=>{e.addEventListener("load",t),e.addEventListener("error",t)})}e&&(await r(),await t._requestAnimFrame(),await t._pendingWebpackRequests(t))}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.4",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let r=e.getAttribute("data-rocket-src");if(r&&0!==r.indexOf("data:")){0===r.indexOf("//")&&(r=location.protocol+r);try{let i=new URL(r).origin;i!==location.origin&&t.push({src:i,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(n){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._pendingWebpackRequests(this),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){if(await this._littleBreath(),!0===t.noModule&&"noModule"in HTMLScriptElement.prototype){t.setAttribute("data-rocket-status","skipped");return}return new Promise(navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(){let t={};function e(e,r){!function e(r){!t[r]&&(t[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.remove.apply(r,arguments)});function i(e){return t[r].eventsToRewrite.indexOf(e)>=0?"rocket-"+e:e}}(e),t[e].eventsToRewrite.push(r)}function r(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}e(document,"DOMContentLoaded"),e(window,"DOMContentLoaded"),e(window,"load"),e(window,"pageshow"),e(document,"readystatechange"),r(document,"onreadystatechange"),r(window,"onload"),r(window,"onpageshow")}_delayJQueryReady(t){let e;function r(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}function i(i){if(i&&i.fn&&!t.allJQueries.includes(i)){i.fn.ready=i.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(i):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(i)),i([])};let n=i.fn.on;i.fn.on=i.fn.init.prototype.on=function(){return this[0]===window&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=r(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{let e=arguments[0][t];delete arguments[0][t],arguments[0][r(t)]=e})),n.apply(this,arguments),this},t.allJQueries.push(i)}e=i}i(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){i(t)}})}async _pendingWebpackRequests(t){let e=document.querySelector("script[data-webpack]");async function r(){return new Promise(t=>{e.addEventListener("load",t),e.addEventListener("error",t)})}e&&(await r(),await t._requestAnimFrame(),await t._pendingWebpackRequests(t))}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
 	
-		<title>Sessao de ImplementaÃ§Ã£o â€“ Thiago Ehrhardt</title>
+		<title>Sessao de Implementação – Thiago Ehrhardt</title>
 <meta name="robots" content="max-image-preview:large">
 <link rel="dns-prefetch" href="//unpkg.com">
 <link rel="dns-prefetch" href="//viewer.typebot.io">
 
-<link rel="alternate" type="application/rss+xml" title="Feed para Thiago Ehrhardt Â»" href="https://www.rubensgodoy.site/feed/">
-<link rel="alternate" type="application/rss+xml" title="Feed de comentÃ¡rios para Thiago Ehrhardt Â»" href="https://www.rubensgodoy.site/comments/feed/">
-<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.rubensgodoy.site/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.rubensgodoy.site%2Fsessao%2F">
-<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.rubensgodoy.site/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.rubensgodoy.site%2Fsessao%2F&amp;format=xml">
+<link rel="alternate" type="application/rss+xml" title="Feed para Thiago Ehrhardt »" href="https://lp.thiagoehrhardt.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Feed de comentários para Thiago Ehrhardt »" href="https://lp.thiagoehrhardt.com/comments/feed/">
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://lp.thiagoehrhardt.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flp.thiagoehrhardt.com%2Fsessao%2F">
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://lp.thiagoehrhardt.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Flp.thiagoehrhardt.com%2Fsessao%2F&amp;format=xml">
 <style id="wp-img-auto-sizes-contain-inline-css">
 img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 /*# sourceURL=wp-img-auto-sizes-contain-inline-css */
@@ -55,18 +55,18 @@ img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
 </style>
 <link data-minify="1" rel="stylesheet" id="elementor-gf-local-librefranklin-css" href="css/librefranklin.css" media="all">
 <link data-minify="1" rel="stylesheet" id="elementor-gf-local-aleo-css" href="css/aleo.css" media="all">
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer=""></script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer=""></script>
-<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.rubensgodoy.site/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/js.cookie.js?ver=1756947777" id="js.cookie-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/js.cookie.js?ver=1756947777" id="js.cookie-js" defer=""></script>
 <script id="handl-utm-grabber-js-extra">
 var handl_utm = {"utm_source":"ig","utm_medium":"organico","utm_content":"biografiainstagram","utm_campaign":"Campanha"};
 //# sourceURL=handl-utm-grabber-js-extra
 </script>
-<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.rubensgodoy.site/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/handl-utm-grabber.js?ver=1756947777" id="handl-utm-grabber-js" defer=""></script>
-<link rel="https://api.w.org/" href="https://www.rubensgodoy.site/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://www.rubensgodoy.site/wp-json/wp/v2/pages/665"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.rubensgodoy.site/xmlrpc.php?rsd">
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/cache/min/1/wp-content/plugins/handl-utm-grabber/js/handl-utm-grabber.js?ver=1756947777" id="handl-utm-grabber-js" defer=""></script>
+<link rel="https://api.w.org/" href="https://lp.thiagoehrhardt.com/wp-json/"><link rel="alternate" title="JSON" type="application/json" href="https://lp.thiagoehrhardt.com/wp-json/wp/v2/pages/665"><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://lp.thiagoehrhardt.com/xmlrpc.php?rsd">
 <meta name="generator" content="WordPress 6.9.5">
-<link rel="canonical" href="https://www.rubensgodoy.site/sessao/">
-<link rel="shortlink" href="https://www.rubensgodoy.site/?p=665">
+<link rel="canonical" href="https://lp.thiagoehrhardt.com/sessao/">
+<link rel="shortlink" href="https://lp.thiagoehrhardt.com/?p=665">
 <meta name="cdp-version" content="1.5.0"><meta name="generator" content="Elementor 3.28.4; features: e_font_icon_svg, additional_custom_breakpoints, e_local_google_fonts; settings: css_print_method-external, google_font-enabled, font_display-swap">
 <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -110,7 +110,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<link rel="icon" href="images/03.svg" sizes="32x32">
 <link rel="icon" href="images/03.svg" sizes="192x192">
 <link rel="apple-touch-icon" href="images/03.svg">
-<meta name="msapplication-TileImage" content="https://www.rubensgodoy.site/wp-content/uploads/2023/08/03.svg">
+<meta name="msapplication-TileImage" content="https://lp.thiagoehrhardt.com/wp-content/uploads/2023/08/03.svg">
 <noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, viewport-fit=cover">
 	<link rel="stylesheet" id="elementor-post-466-css" href="css/post-466.css" media="all">
@@ -122,9 +122,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <style id="wpr-lazyload-bg">:root{--wpr-bg-e8a4c2f7-bd16-47b2-baae-d00edd1d0a5f: url('images/Primeira-Secao-3-1.jpg');}:root{--wpr-bg-22927d70-3171-46ea-8b34-f5eaa655adbe: url('images/Mobile-1-Secao-2-1.jpg');}</style><style id="wpr-lazyload-bg-exclusion"></style>
 <noscript>
-<style id="wpr-lazyload-bg-nostyle">:root{--wpr-bg-e8a4c2f7-bd16-47b2-baae-d00edd1d0a5f: url('images/Primeira-Secao-3-1.jpg');}:root{--wpr-bg-22927d70-3171-46ea-8b34-f5eaa655adbe: url('images/Design-sem-nome-57.png');}:root{--wpr-bg-e316f5b7-3c19-442f-b73c-435a8f4b5659: url('images/Segunda-Secao-2-1.jpg');}:root{--wpr-bg-ff758fe1-688d-4776-832d-91a6e0262769: url('images/Terceira-Secao.jpg');}:root{--wpr-bg-cd398d85-0470-49f6-9f20-b93b10f291aa: url('images/Mobile-2-Secao-1.jpg');}:root{--wpr-bg-13f99f0a-90fd-4087-b645-84ceab3b4aba: url('https://www.rubensgodoy.site/wp-content/plugins/wp-rocket/assets/img/youtube.png');}</style>
+<style id="wpr-lazyload-bg-nostyle">:root{--wpr-bg-e8a4c2f7-bd16-47b2-baae-d00edd1d0a5f: url('images/Primeira-Secao-3-1.jpg');}:root{--wpr-bg-22927d70-3171-46ea-8b34-f5eaa655adbe: url('images/Design-sem-nome-57.png');}:root{--wpr-bg-e316f5b7-3c19-442f-b73c-435a8f4b5659: url('images/Segunda-Secao-2-1.jpg');}:root{--wpr-bg-ff758fe1-688d-4776-832d-91a6e0262769: url('images/Terceira-Secao.jpg');}:root{--wpr-bg-cd398d85-0470-49f6-9f20-b93b10f291aa: url('images/Mobile-2-Secao-1.jpg');}:root{--wpr-bg-13f99f0a-90fd-4087-b645-84ceab3b4aba: url('https://lp.thiagoehrhardt.com/wp-content/plugins/wp-rocket/assets/img/youtube.png');}</style>
 </noscript>
-<script type="application/javascript">const rocket_pairs = [{"selector":".elementor-665 .elementor-element.elementor-element-d6b7c21:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-d6b7c21 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-e8a4c2f7-bd16-47b2-baae-d00edd1d0a5f: url('images\/Primeira-Secao-3-1.jpg');}","hash":"e8a4c2f7-bd16-47b2-baae-d00edd1d0a5f"},{"selector":".elementor-665 .elementor-element.elementor-element-d6b7c21:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-d6b7c21 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-22927d70-3171-46ea-8b34-f5eaa655adbe: url('images\/Design-sem-nome-57.png');}","hash":"22927d70-3171-46ea-8b34-f5eaa655adbe"},{"selector":".elementor-665 .elementor-element.elementor-element-ec67bc8:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-ec67bc8 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-e316f5b7-3c19-442f-b73c-435a8f4b5659: url('images\/Segunda-Secao-2-1.jpg');}","hash":"e316f5b7-3c19-442f-b73c-435a8f4b5659"},{"selector":".elementor-665 .elementor-element.elementor-element-cd934db:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-cd934db > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-ff758fe1-688d-4776-832d-91a6e0262769: url('images\/Terceira-Secao.jpg');}","hash":"ff758fe1-688d-4776-832d-91a6e0262769"},{"selector":".elementor-665 .elementor-element.elementor-element-cd934db:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-cd934db > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-cd398d85-0470-49f6-9f20-b93b10f291aa: url('images\/Mobile-2-Secao-1.jpg');}","hash":"cd398d85-0470-49f6-9f20-b93b10f291aa"},{"selector":".rll-youtube-player .play","style":":root{--wpr-bg-13f99f0a-90fd-4087-b645-84ceab3b4aba: url('https:\/\/www.rubensgodoy.site\/wp-content\/plugins\/wp-rocket\/assets\/img\/youtube.png');}","hash":"13f99f0a-90fd-4087-b645-84ceab3b4aba"}]; const rocket_excluded_pairs = [];</script></head>
+<script type="application/javascript">const rocket_pairs = [{"selector":".elementor-665 .elementor-element.elementor-element-d6b7c21:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-d6b7c21 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-e8a4c2f7-bd16-47b2-baae-d00edd1d0a5f: url('images\/Primeira-Secao-3-1.jpg');}","hash":"e8a4c2f7-bd16-47b2-baae-d00edd1d0a5f"},{"selector":".elementor-665 .elementor-element.elementor-element-d6b7c21:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-d6b7c21 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-22927d70-3171-46ea-8b34-f5eaa655adbe: url('images\/Design-sem-nome-57.png');}","hash":"22927d70-3171-46ea-8b34-f5eaa655adbe"},{"selector":".elementor-665 .elementor-element.elementor-element-ec67bc8:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-ec67bc8 > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-e316f5b7-3c19-442f-b73c-435a8f4b5659: url('images\/Segunda-Secao-2-1.jpg');}","hash":"e316f5b7-3c19-442f-b73c-435a8f4b5659"},{"selector":".elementor-665 .elementor-element.elementor-element-cd934db:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-cd934db > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-ff758fe1-688d-4776-832d-91a6e0262769: url('images\/Terceira-Secao.jpg');}","hash":"ff758fe1-688d-4776-832d-91a6e0262769"},{"selector":".elementor-665 .elementor-element.elementor-element-cd934db:not(.elementor-motion-effects-element-type-background), .elementor-665 .elementor-element.elementor-element-cd934db > .elementor-motion-effects-container > .elementor-motion-effects-layer","style":":root{--wpr-bg-cd398d85-0470-49f6-9f20-b93b10f291aa: url('images\/Mobile-2-Secao-1.jpg');}","hash":"cd398d85-0470-49f6-9f20-b93b10f291aa"},{"selector":".rll-youtube-player .play","style":":root{--wpr-bg-13f99f0a-90fd-4087-b645-84ceab3b4aba: url('https:\/\/lp.thiagoehrhardt.com\/wp-content\/plugins\/wp-rocket\/assets\/img\/youtube.png');}","hash":"13f99f0a-90fd-4087-b645-84ceab3b4aba"}]; const rocket_excluded_pairs = [];</script></head>
 <body class="wp-singular page-template page-template-elementor_canvas page page-id-665 wp-custom-logo wp-theme-hello-elementor elementor-default elementor-template-canvas elementor-kit-5 elementor-page elementor-page-665">
 	<!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KT83N8G8"
@@ -136,22 +136,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 		<div class="elementor-element elementor-element-9a87ad2 e-con-full e-flex e-con e-child" data-id="9a87ad2" data-element_type="container">
 				<div class="elementor-element elementor-element-e70fd85 elementor-widget elementor-widget-image" data-id="e70fd85" data-element_type="widget" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img src="images/AUDAX IMPLEMENTAÃ‡ÃƒO.png" alt="Audax ImplementaÃ§Ã£o" style="max-width: 100%; height: auto;" />															</div>
+															<img src="images/AUDAX IMPLEMENTAÇÃO.png" alt="Audax Implementação" style="max-width: 100%; height: auto;" />															</div>
 				</div>
 				<div class="elementor-element elementor-element-4e9b450 elementor-widget elementor-widget-heading" data-id="4e9b450" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h1 class="elementor-heading-title elementor-size-default">Crie, venda e escale seu curso ou mentoria para <pc>R$20 mil a R$100 mil+ por mÃªs.</pc></h1>				</div>
+					<h1 class="elementor-heading-title elementor-size-default">Crie, venda e escale seu curso ou mentoria para <pc>R$20 mil a R$100 mil+ por mês.</pc></h1>				</div>
 				</div>
 				<div class="elementor-element elementor-element-3b97529 elementor-widget elementor-widget-text-editor" data-id="3b97529" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-									Na implementaÃ§Ã£o, transformamos seu conhecimento em um negÃ³cio digital e te acompanhamos na execuÃ§Ã£o e na escala.								</div>
+									Na implementação, transformamos seu conhecimento em um negócio digital e te acompanhamos na execução e na escala.								</div>
 				</div>
 				<div class="elementor-element elementor-element-113a141 elementor-widget elementor-widget-button" data-id="113a141" data-element_type="widget" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 									<div class="elementor-button-wrapper">
 					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-bob" href="#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjQ2NiIsInRvZ2dsZSI6ZmFsc2V9">
 						<span class="elementor-button-content-wrapper">
-									<span class="elementor-button-text">APLICAR PARA A IMPLEMENTAÃ‡ÃƒO</span>
+									<span class="elementor-button-text">APLICAR PARA A IMPLEMENTAÇÃO</span>
 					</span>
 					</a>
 				</div>
@@ -176,7 +176,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 				</div>
 				<div class="elementor-element elementor-element-be1295c elementor-widget elementor-widget-heading" data-id="be1295c" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">Provavelmente vocÃª estÃ¡ em um desses cenÃ¡rios:</h2>				</div>
+					<h2 class="elementor-heading-title elementor-size-default">Provavelmente você está em um desses cenários:</h2>				</div>
 				</div>
 				<div class="elementor-element elementor-element-e838adb elementor-widget__width-initial elementor-widget elementor-widget-icon-box" data-id="e838adb" data-element_type="widget" data-widget_type="icon-box.default">
 				<div class="elementor-widget-container">
@@ -187,9 +187,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 				
 									<p class="elementor-icon-box-description">
-Sabe que seu conhecimento vale muito, mas ainda nÃ£o conseguiu transformÃ¡-lo em um negÃ³cio digital.<br><br>
-JÃ¡ tem um curso ou mentoria, mas as vendas nÃ£o sÃ£o constantes e vocÃª nÃ£o sabe o que precisa mudar para finalmente escalar.<br><br>
-Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria rotina e busca mais liberdade.					</p>
+Sabe que seu conhecimento vale muito, mas ainda não conseguiu transformá-lo em um negócio digital.<br><br>
+Já tem um curso ou mentoria, mas as vendas não são constantes e você não sabe o que precisa mudar para finalmente escalar.<br><br>
+Tem a agenda cheia e ganha bem, mas percebe que está preso à própria rotina e busca mais liberdade.					</p>
 				
 			</div>
 			
@@ -207,7 +207,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 		<div class="elementor-element elementor-element-5bc8e02 e-con-full e-flex e-con e-child" data-id="5bc8e02" data-element_type="container" data-settings="{" background_background":"classic"}"="">
 				<div class="elementor-element elementor-element-dc782fd elementor-widget elementor-widget-heading" data-id="dc782fd" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">Para quem Ã© essa implementaÃ§Ã£o?</h2>				</div>
+					<h2 class="elementor-heading-title elementor-size-default">Para quem é essa implementação?</h2>				</div>
 				</div>
 				<div class="elementor-element elementor-element-941a8c2 elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="941a8c2" data-element_type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
@@ -215,12 +215,12 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 							<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
 							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
-										<span class="elementor-icon-list-text">Profissionais e especialistas que querem transformar seu conhecimento em um negÃ³cio digital pronto para vender.</span>
+										<span class="elementor-icon-list-text">Profissionais e especialistas que querem transformar seu conhecimento em um negócio digital pronto para vender.</span>
 									</li>
 								<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
 							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
-										<span class="elementor-icon-list-text">Quem quer construir um posicionamento forte, atrair as pessoas certas todos os dias e gerar vendas de forma orgÃ¢nica.</span>
+										<span class="elementor-icon-list-text">Quem quer construir um posicionamento forte, atrair as pessoas certas todos os dias e gerar vendas de forma orgânica.</span>
 									</li>
 								<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
@@ -230,7 +230,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 								<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
 							<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>						</span>
-										<span class="elementor-icon-list-text">Quem quer mais liberdade e tempo, construindo um negÃ³cio digital que nÃ£o dependa da sua presenÃ§a.</span>
+										<span class="elementor-icon-list-text">Quem quer mais liberdade e tempo, construindo um negócio digital que não dependa da sua presença.</span>
 									</li>
 						</ul>
 						</div>
@@ -239,7 +239,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 		<div class="elementor-element elementor-element-1dcb8ea e-con-full e-flex e-con e-child" data-id="1dcb8ea" data-element_type="container" data-settings="{" background_background":"classic"}"="">
 				<div class="elementor-element elementor-element-90a0a63 elementor-widget elementor-widget-heading" data-id="90a0a63" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">Para quem nÃ£o Ã©</h2>				</div>
+					<h2 class="elementor-heading-title elementor-size-default">Para quem não é</h2>				</div>
 				</div>
 				<div class="elementor-element elementor-element-674311d elementor-icon-list--layout-traditional elementor-list-item-link-full_width elementor-widget elementor-widget-icon-list" data-id="674311d" data-element_type="widget" data-widget_type="icon-list.default">
 				<div class="elementor-widget-container">
@@ -247,17 +247,17 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 							<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
 							<svg aria-hidden="true" class="e-font-icon-svg e-fas-times" viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>						</span>
-										<span class="elementor-icon-list-text">VocÃª procura dinheiro fÃ¡cil ou renda extra sem entregar transformaÃ§Ã£o real</span>
+										<span class="elementor-icon-list-text">Você procura dinheiro fácil ou renda extra sem entregar transformação real</span>
 									</li>
 								<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
 							<svg aria-hidden="true" class="e-font-icon-svg e-fas-times" viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>						</span>
-										<span class="elementor-icon-list-text">VocÃª nÃ£o tem nenhuma expertise consolidada ainda</span>
+										<span class="elementor-icon-list-text">Você não tem nenhuma expertise consolidada ainda</span>
 									</li>
 								<li class="elementor-icon-list-item">
 											<span class="elementor-icon-list-icon">
 							<svg aria-hidden="true" class="e-font-icon-svg e-fas-times" viewBox="0 0 352 512" xmlns="http://www.w3.org/2000/svg"><path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>						</span>
-										<span class="elementor-icon-list-text">VocÃª estÃ¡ disposto a mentir ou fazer falsas promessas para vender</span>
+										<span class="elementor-icon-list-text">Você está disposto a mentir ou fazer falsas promessas para vender</span>
 									</li>
 						</ul>
 						</div>
@@ -272,7 +272,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 		<div class="elementor-element elementor-element-35e87ec e-con-full e-flex e-con e-child" data-id="35e87ec" data-element_type="container">
 		<div class="elementor-element elementor-element-e2b7035 e-con-full e-flex e-con e-child" data-id="e2b7035" data-element_type="container">
 				<div class="elementor-element elementor-element-fd57dd4 elementor-widget elementor-widget-heading" data-id="fd57dd4" data-element_type="widget" data-widget_type="heading.default">
-					<h2 class="elementor-heading-title elementor-size-default">O Que VocÃª Vai Ter Com a ImplementaÃ§Ã£o</h2>				</div>
+					<h2 class="elementor-heading-title elementor-size-default">O Que Você Vai Ter Com a Implementação</h2>				</div>
 				</div>
 				<div class="elementor-element elementor-element-47c5747 elementor-widget__width-initial elementor-widget elementor-widget-icon-box" data-id="47c5747" data-element_type="widget" data-widget_type="icon-box.default">
 				<div class="elementor-widget-container">
@@ -283,7 +283,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 
 			
 						<p class="elementor-icon-box-description">
-					A ImplementaÃ§Ã£o Audax estrutura seu negÃ³cio digital do produto Ã  aquisiÃ§Ã£o, deixando sua operaÃ§Ã£o pronta para vender e crescer.					</p>
+					A Implementação Audax estrutura seu negócio digital do produto à aquisição, deixando sua operação pronta para vender e crescer.					</p>
 			
 		</div>
 		
@@ -301,7 +301,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 
 			
 						<p class="elementor-icon-box-description">
-					VocÃª vai ter:					</p>
+					Você vai ter:					</p>
 			
 		</div>
 		
@@ -314,17 +314,17 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 					<li class="elementor-icon-list-item">
 							<span class="elementor-icon-list-icon">
 					<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>				</span>
-						<span class="elementor-icon-list-text">Curso ou mentoria estruturados, com posicionamento, precificaÃ§Ã£o e mÃ©todo validado.</span>
+						<span class="elementor-icon-list-text">Curso ou mentoria estruturados, com posicionamento, precificação e método validado.</span>
 					</li>
 					<li class="elementor-icon-list-item">
 							<span class="elementor-icon-list-icon">
 					<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>				</span>
-						<span class="elementor-icon-list-text">PÃ¡gina de vendas e funil prontos, com copy para seus criativos.</span>
+						<span class="elementor-icon-list-text">Página de vendas e funil prontos, com copy para seus criativos.</span>
 					</li>
 					<li class="elementor-icon-list-item">
 							<span class="elementor-icon-list-icon">
 					<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>				</span>
-						<span class="elementor-icon-list-text">ConteÃºdo para Instagram, com posicionamento estratÃ©gico para atrair as pessoas certas.</span>
+						<span class="elementor-icon-list-text">Conteúdo para Instagram, com posicionamento estratégico para atrair as pessoas certas.</span>
 					</li>
 					<li class="elementor-icon-list-item">
 							<span class="elementor-icon-list-icon">
@@ -334,7 +334,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 					<li class="elementor-icon-list-item">
 							<span class="elementor-icon-list-icon">
 					<svg aria-hidden="true" class="e-font-icon-svg e-fas-check" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg>				</span>
-						<span class="elementor-icon-list-text">TrÃ¡fego pago implementado e configurado, com toda a estrutura necessÃ¡ria para aquisiÃ§Ã£o.</span>
+						<span class="elementor-icon-list-text">Tráfego pago implementado e configurado, com toda a estrutura necessária para aquisição.</span>
 					</li>
 				</ul>
 				</div>
@@ -356,18 +356,18 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 		<div class="elementor-element elementor-element-e8b96f9 e-con-full e-flex e-con e-child" data-id="e8b96f9" data-element_type="container">
 				<div class="elementor-element elementor-element-dc1da83 elementor-widget elementor-widget-heading" data-id="dc1da83" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h1 class="elementor-heading-title elementor-size-default">Quem Ã© <pc>Rubens Godoy?</pc></h1>				</div>
+					<h1 class="elementor-heading-title elementor-size-default">Quem é <pc>Rubens Godoy?</pc></h1>				</div>
 				</div>
 				<div class="elementor-element elementor-element-5880e38 elementor-widget elementor-widget-text-editor" data-id="5880e38" data-element_type="widget" data-widget_type="text-editor.default">
 				<div class="elementor-widget-container">
-									<p>CristÃ£o, casado com a Weidila e estrategista digital com anos de experiÃªncia em marketing, trÃ¡fego e funis de vendas.</p><p>Ajuda profissionais, especialistas e empresÃ¡rios a transformarem seu conhecimento em um negÃ³cio sÃ³lido no digital, capaz de gerar vendas todos os dias.</p><p>Rubens jÃ¡ faturou mais de R$10 milhÃµes com sua metodologia e ajudou dezenas de profissionais a:<br>â€“ Transformarem conhecimento em um negÃ³cio digital<br>â€“ ConstruÃ­rem um posicionamento forte e atraÃ­rem os clientes certos<br>â€“ Estruturarem uma operaÃ§Ã£o capaz de vender e escalar<br>â€“ Terem mais previsibilidade, tempo e liberdade</p>								</div>
+									<p>Cristão, casado com a Weidila e estrategista digital com anos de experiência em marketing, tráfego e funis de vendas.</p><p>Ajuda profissionais, especialistas e empresários a transformarem seu conhecimento em um negócio sólido no digital, capaz de gerar vendas todos os dias.</p><p>Rubens já faturou mais de R$10 milhões com sua metodologia e ajudou dezenas de profissionais a:<br>– Transformarem conhecimento em um negócio digital<br>– Construírem um posicionamento forte e atraírem os clientes certos<br>– Estruturarem uma operação capaz de vender e escalar<br>– Terem mais previsibilidade, tempo e liberdade</p>								</div>
 				</div>
 				<div class="elementor-element elementor-element-6fc0f1d elementor-widget elementor-widget-button" data-id="6fc0f1d" data-element_type="widget" data-widget_type="button.default">
 				<div class="elementor-widget-container">
 									<div class="elementor-button-wrapper">
 					<a class="elementor-button elementor-button-link elementor-size-sm elementor-animation-bob" href="#elementor-action%3Aaction%3Dpopup%3Aopen%26settings%3DeyJpZCI6IjQ2NiIsInRvZ2dsZSI6ZmFsc2V9">
 						<span class="elementor-button-content-wrapper">
-									<span class="elementor-button-text">APLICAR PARA A IMPLEMENTAÃ‡ÃƒO</span>
+									<span class="elementor-button-text">APLICAR PARA A IMPLEMENTAÇÃO</span>
 					</span>
 					</a>
 				</div>
@@ -384,7 +384,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-eadc2a8 elementor-widget elementor-widget-heading" data-id="eadc2a8" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<p class="elementor-heading-title elementor-size-default">Â© 2026 por Rubens Godoy</p>				</div>
+					<p class="elementor-heading-title elementor-size-default">© 2026 por Rubens Godoy</p>				</div>
 				</div>
 					</div>
 				</div>
@@ -397,7 +397,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 					<div class="e-con-inner">
 				<div class="elementor-element elementor-element-4aafc0f2 elementor-widget elementor-widget-image" data-id="4aafc0f2" data-element_type="widget" data-widget_type="image.default">
 				<div class="elementor-widget-container">
-															<img src="images/audax-logo.png" alt="Audax ImplementaÃ§Ã£o" style="max-width: 100%; height: auto;" />															</div>
+															<img src="images/audax-logo.png" alt="Audax Implementação" style="max-width: 100%; height: auto;" />															</div>
 				</div>
 				<div id="audax-form-header" class="elementor-element elementor-element-6bc57aee elementor-widget elementor-widget-heading" data-id="6bc57aee" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
@@ -406,7 +406,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 				<div class="elementor-element elementor-element-47bed860 elementor-widget" data-id="47bed860" data-element_type="widget">
 				<div class="elementor-widget-container">
 
-				<!-- FORMULÃRIO CUSTOMIZADO FORMINIT + WHATSAPP -->
+				<!-- FORMULÁRIO CUSTOMIZADO FORMINIT + WHATSAPP -->
 				<div id="audax-form-content">
 				<form id="audax-form" style="display:flex;flex-direction:column;gap:12px;">
 					<input type="text" id="audax-nome" placeholder="Nome completo" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
@@ -417,8 +417,8 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 					<input type="email" id="audax-email" placeholder="Seu melhor e-mail" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 					
 					<select id="audax-faturamento" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
-						<option value="" disabled selected>Qual sua mÃ©dia de faturamento mensal?</option>
-						<option value="AtÃ© R$ 5 Mil">AtÃ© R$ 5 Mil</option>
+						<option value="" disabled selected>Qual sua média de faturamento mensal?</option>
+						<option value="Até R$ 5 Mil">Até R$ 5 Mil</option>
 						<option value="De R$ 5 a R$ 10 Mil">De R$ 5 a R$ 10 Mil</option>
 						<option value="De R$ 10 a R$ 20 Mil">De R$ 10 a R$ 20 Mil</option>
 						<option value="De R$ 20 a R$ 50 Mil">De R$ 20 a R$ 50 Mil</option>
@@ -439,7 +439,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 					<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:60px;height:60px;margin:0 auto 16px;display:block;color:#E9AC6F;">
 						<path d="M9 12L11 14L15 10M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 					</svg>
-					<h3 style="color:#fff;margin-bottom:8px;">AplicaÃ§Ã£o enviada!</h3>
+					<h3 style="color:#fff;margin-bottom:8px;">Aplicação enviada!</h3>
 					<p style="color:#ccc;margin-bottom:16px;">Aguarde, estamos te direcionando para o WhatsApp...</p>
 					<a id="audax-wa-btn" href="#" target="_blank" class="elementor-button elementor-size-lg" style="display:inline-block;text-decoration:none;">
 						<span class="elementor-button-content-wrapper">
@@ -489,7 +489,7 @@ Tem a agenda cheia e ganha bem, mas percebe que estÃ¡ preso Ã  prÃ³pria ro
 //# sourceURL=rocket-browser-checker-js-after
 </script>
 <script id="rocket-preload-links-js-extra">
-var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://www.rubensgodoy.site","onHoverDelay":"100","rateThrottle":"3"};
+var RocketPreloadLinksConfig = {"excludeUris":"/(?:.+/)?feed(?:/(?:.+/?)?)?$|/(?:.+/)?embed/|/(index.php/)?(.*)wp-json(/.*|$)|/refer/|/go/|/recommend/|/recommends/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https://lp.thiagoehrhardt.com","onHoverDelay":"100","rateThrottle":"3"};
 //# sourceURL=rocket-preload-links-js-extra
 </script>
 <script type="rocketlazyloadscript" id="rocket-preload-links-js-after">
@@ -508,34 +508,34 @@ var rocket_lazyload_css_data = {"threshold":"300"};
 
 //# sourceURL=rocket_lazyload_css-js-after
 </script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=3.1.0" id="hello-theme-frontend-js" defer=""></script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-content/plugins/pro-elements/assets/js/webpack-pro.runtime.min.js?ver=3.28.1" id="elementor-pro-webpack-runtime-js" defer=""></script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.28.4" id="elementor-webpack-runtime-js" defer=""></script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.28.4" id="elementor-frontend-modules-js" defer=""></script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1" id="wp-hooks-js"></script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/themes/hello-elementor/assets/js/hello-frontend.min.js?ver=3.1.0" id="hello-theme-frontend-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/plugins/pro-elements/assets/js/webpack-pro.runtime.min.js?ver=3.28.1" id="elementor-pro-webpack-runtime-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.28.4" id="elementor-webpack-runtime-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.28.4" id="elementor-frontend-modules-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1" id="wp-hooks-js"></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
 <script type="rocketlazyloadscript" id="wp-i18n-js-after">
 wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
 //# sourceURL=wp-i18n-js-after
 </script>
 <script type="rocketlazyloadscript" id="elementor-pro-frontend-js-before">
-var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/www.rubensgodoy.site\/wp-admin\/admin-ajax.php","nonce":"3b499a6d1e","urls":{"assets":"https:\/\/www.rubensgodoy.site\/wp-content\/plugins\/pro-elements\/assets\/","rest":"https:\/\/www.rubensgodoy.site\/wp-json\/"},"settings":{"lazy_load_background_images":true},"popup":{"hasPopUps":true},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/www.rubensgodoy.site\/wp-content\/plugins\/pro-elements\/modules\/lottie\/assets\/animations\/default.json"}};
+var ElementorProFrontendConfig = {"ajaxurl":"https:\/\/lp.thiagoehrhardt.com\/wp-admin\/admin-ajax.php","nonce":"3b499a6d1e","urls":{"assets":"https:\/\/lp.thiagoehrhardt.com\/wp-content\/plugins\/pro-elements\/assets\/","rest":"https:\/\/lp.thiagoehrhardt.com\/wp-json\/"},"settings":{"lazy_load_background_images":true},"popup":{"hasPopUps":true},"shareButtonsNetworks":{"facebook":{"title":"Facebook","has_counter":true},"twitter":{"title":"Twitter"},"linkedin":{"title":"LinkedIn","has_counter":true},"pinterest":{"title":"Pinterest","has_counter":true},"reddit":{"title":"Reddit","has_counter":true},"vk":{"title":"VK","has_counter":true},"odnoklassniki":{"title":"OK","has_counter":true},"tumblr":{"title":"Tumblr"},"digg":{"title":"Digg"},"skype":{"title":"Skype"},"stumbleupon":{"title":"StumbleUpon","has_counter":true},"mix":{"title":"Mix"},"telegram":{"title":"Telegram"},"pocket":{"title":"Pocket","has_counter":true},"xing":{"title":"XING","has_counter":true},"whatsapp":{"title":"WhatsApp"},"email":{"title":"Email"},"print":{"title":"Print"},"x-twitter":{"title":"X"},"threads":{"title":"Threads"}},"facebook_sdk":{"lang":"pt_BR","app_id":""},"lottie":{"defaultAnimationUrl":"https:\/\/lp.thiagoehrhardt.com\/wp-content\/plugins\/pro-elements\/modules\/lottie\/assets\/animations\/default.json"}};
 //# sourceURL=elementor-pro-frontend-js-before
 </script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-content/plugins/pro-elements/assets/js/frontend.min.js?ver=3.28.1" id="elementor-pro-frontend-js" defer=""></script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/plugins/pro-elements/assets/js/frontend.min.js?ver=3.28.1" id="elementor-pro-frontend-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js" defer=""></script>
 <script type="rocketlazyloadscript" id="elementor-frontend-js-before">
-var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.28.4","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_local_google_fonts":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"nested-elements":true,"editor_v2":true,"home_screen":true},"urls":{"assets":"https:\/\/www.rubensgodoy.site\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/www.rubensgodoy.site\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/www.rubensgodoy.site\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"624912ff55"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"logo","hello_footer_logo_type":"logo"},"post":{"id":665,"title":"Sessao%20de%20Implementa%C3%A7%C3%A3o%20%E2%80%93%20Thiago%20Ehrhardt","excerpt":"","featuredImage":false}};
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Compartilhar no Facebook","shareOnTwitter":"Compartilhar no Twitter","pinIt":"Fixar","download":"Baixar","downloadImage":"Baixar imagem","fullscreen":"Tela cheia","zoom":"Zoom","share":"Compartilhar","playVideo":"Reproduzir v\u00eddeo","previous":"Anterior","next":"Pr\u00f3ximo","close":"Fechar","a11yCarouselPrevSlideMessage":"Slide anterior","a11yCarouselNextSlideMessage":"Pr\u00f3ximo slide","a11yCarouselFirstSlideMessage":"Este \u00e9 o primeiro slide","a11yCarouselLastSlideMessage":"Este \u00e9 o \u00faltimo slide","a11yCarouselPaginationBulletMessage":"Ir para o slide"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Dispositivos m\u00f3veis no modo retrato","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Dispositivos m\u00f3veis no modo paisagem","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet no modo retrato","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet no modo paisagem","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Notebook","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Tela ampla (widescreen)","value":2400,"default_value":2400,"direction":"min","is_enabled":false}},"hasCustomBreakpoints":false},"version":"3.28.4","is_static":false,"experimentalFeatures":{"e_font_icon_svg":true,"additional_custom_breakpoints":true,"container":true,"e_local_google_fonts":true,"theme_builder_v2":true,"hello-theme-header-footer":true,"nested-elements":true,"editor_v2":true,"home_screen":true},"urls":{"assets":"https:\/\/lp.thiagoehrhardt.com\/wp-content\/plugins\/elementor\/assets\/","ajaxurl":"https:\/\/lp.thiagoehrhardt.com\/wp-admin\/admin-ajax.php","uploadUrl":"https:\/\/lp.thiagoehrhardt.com\/wp-content\/uploads"},"nonces":{"floatingButtonsClickTracking":"624912ff55"},"swiperClass":"swiper","settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description","hello_header_logo_type":"logo","hello_footer_logo_type":"logo"},"post":{"id":665,"title":"Sessao%20de%20Implementa%C3%A7%C3%A3o%20%E2%80%93%20Thiago%20Ehrhardt","excerpt":"","featuredImage":false}};
 //# sourceURL=elementor-frontend-js-before
 </script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.28.4" id="elementor-frontend-js" defer=""></script>
-<script type="rocketlazyloadscript" data-rocket-src="https://www.rubensgodoy.site/wp-content/plugins/pro-elements/assets/js/elements-handlers.min.js?ver=3.28.1" id="pro-elements-handlers-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.28.4" id="elementor-frontend-js" defer=""></script>
+<script type="rocketlazyloadscript" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/plugins/pro-elements/assets/js/elements-handlers.min.js?ver=3.28.1" id="pro-elements-handlers-js" defer=""></script>
 <script id="fme-custom-mask-script-js-extra">
-var fmeData = {"pluginUrl":"https://www.rubensgodoy.site/wp-content/plugins/mask-form-elementor/","errorMessages":{"mask-cnpj":"CNPJ inv\u00e1lido.","mask-cpf":"CPF inv\u00e1lido.","mask-cep":"CEP inv\u00e1lido (XXXXX-XXX).","mask-phus":"N\u00famero inv\u00e1lido: (123) 456-7890","mask-ph8":"N\u00famero inv\u00e1lido: 1234-5678","mask-ddd8":"N\u00famero inv\u00e1lido: (DDD) 1234-5678","mask-ddd9":"N\u00famero inv\u00e1lido: (DDD) 91234-5678","mask-dmy":"Data inv\u00e1lida: dd / mm/AAAA","mask-mdy":"Data inv\u00e1lida: DD / mm/AAAA","mask-hms":"Tempo inv\u00e1lido: hh: mm: ss","mask-hm":"Tempo inv\u00e1lido: hh:mm","mask-dmyhm":"Data inv\u00e1lida: dd / mm / aaaa hh:mm","mask-mdyhm":"Data inv\u00e1lida: mm / dd / aaaa hh:mm","mask-my":"Data inv\u00e1lida: mm/aaaa","mask-ccs":"N\u00famero de cart\u00e3o de cr\u00e9dito inv\u00e1lido.","mask-cch":"N\u00famero de cart\u00e3o de cr\u00e9dito inv\u00e1lido.","mask-ccmy":"Data inv\u00e1lida.","mask-ccmyy":"Data inv\u00e1lida.","mask-ipv4":"Endere\u00e7o IPv4 inv\u00e1lido."}};
+var fmeData = {"pluginUrl":"https://lp.thiagoehrhardt.com/wp-content/plugins/mask-form-elementor/","errorMessages":{"mask-cnpj":"CNPJ inv\u00e1lido.","mask-cpf":"CPF inv\u00e1lido.","mask-cep":"CEP inv\u00e1lido (XXXXX-XXX).","mask-phus":"N\u00famero inv\u00e1lido: (123) 456-7890","mask-ph8":"N\u00famero inv\u00e1lido: 1234-5678","mask-ddd8":"N\u00famero inv\u00e1lido: (DDD) 1234-5678","mask-ddd9":"N\u00famero inv\u00e1lido: (DDD) 91234-5678","mask-dmy":"Data inv\u00e1lida: dd / mm/AAAA","mask-mdy":"Data inv\u00e1lida: DD / mm/AAAA","mask-hms":"Tempo inv\u00e1lido: hh: mm: ss","mask-hm":"Tempo inv\u00e1lido: hh:mm","mask-dmyhm":"Data inv\u00e1lida: dd / mm / aaaa hh:mm","mask-mdyhm":"Data inv\u00e1lida: mm / dd / aaaa hh:mm","mask-my":"Data inv\u00e1lida: mm/aaaa","mask-ccs":"N\u00famero de cart\u00e3o de cr\u00e9dito inv\u00e1lido.","mask-cch":"N\u00famero de cart\u00e3o de cr\u00e9dito inv\u00e1lido.","mask-ccmy":"Data inv\u00e1lida.","mask-ccmyy":"Data inv\u00e1lida.","mask-ipv4":"Endere\u00e7o IPv4 inv\u00e1lido."}};
 //# sourceURL=fme-custom-mask-script-js-extra
 </script>
-<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.rubensgodoy.site/wp-content/cache/min/1/wp-content/plugins/mask-form-elementor/assets/js/custom-mask-script.js?ver=1756947780" id="fme-custom-mask-script-js" defer=""></script>
-<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://www.rubensgodoy.site/wp-content/cache/min/1/wp-content/plugins/mask-form-elementor/assets/js/new-input-mask.js?ver=1756947780" id="fme-new-input-mask-js" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/cache/min/1/wp-content/plugins/mask-form-elementor/assets/js/custom-mask-script.js?ver=1756947780" id="fme-custom-mask-script-js" defer=""></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-src="https://lp.thiagoehrhardt.com/wp-content/cache/min/1/wp-content/plugins/mask-form-elementor/assets/js/new-input-mask.js?ver=1756947780" id="fme-new-input-mask-js" defer=""></script>
 <script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
 if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
 images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
@@ -545,7 +545,7 @@ if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_c
 <span id="elementor-device-mode-wpr" class="elementor-screen-only"></span>
 
 <script>
-// ===== CONFIGURAÃ‡ÃƒO =====
+// ===== CONFIGURAÇÃO =====
 const AUDAX_WA_NUMBER = '5521996768132';
 const AUDAX_FORMINIT_URL = 'https://forminit.com/f/xuln4myvz9f';
 
@@ -578,7 +578,7 @@ document.addEventListener('submit', async function(e) {
     // Validar WhatsApp
     if (audaxIti && !audaxIti.isValidNumber()) {
       if (formNotice) {
-        formNotice.textContent = 'NÃºmero de WhatsApp invÃ¡lido.';
+        formNotice.textContent = 'Número de WhatsApp inválido.';
         formNotice.style.display = 'block';
       }
       return;
@@ -586,7 +586,7 @@ document.addEventListener('submit', async function(e) {
 
     if (formNotice) formNotice.style.display = 'none';
 
-    // Desabilita botÃ£o
+    // Desabilita botão
     if (submitBtn) {
       submitBtn.disabled = true;
       const btnText = submitBtn.querySelector('.elementor-button-text');
@@ -608,7 +608,7 @@ document.addEventListener('submit', async function(e) {
 
     // Monta mensagem WhatsApp
     const msg = [
-      '*IMPLEMENTAÃ‡ÃƒO AUDAX â€“ NOVA APLICAÃ‡ÃƒO*',
+      '*IMPLEMENTAÇÃO AUDAX – NOVA APLICAÇÃO*',
       '',
       `*Nome:* ${nome}`,
       `*WhatsApp:* ${whatsapp}`,
@@ -620,12 +620,12 @@ document.addEventListener('submit', async function(e) {
     const waUrl = `https://wa.me/${AUDAX_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
     if (waBtn) waBtn.href = waUrl;
 
-    // Mostra tela de sucesso e esconde tÃ­tulo
+    // Mostra tela de sucesso e esconde título
     if (formContent) formContent.style.display = 'none';
     if (formHeader) formHeader.style.display = 'none';
     if (successContent) successContent.style.display = 'block';
 
-    // Redireciona automaticamente apÃ³s 1.5s
+    // Redireciona automaticamente após 1.5s
     setTimeout(function() { window.location.href = waUrl; }, 1500);
   }
 });
