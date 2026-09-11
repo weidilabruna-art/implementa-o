@@ -386,9 +386,11 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso(a) à própria rotin
 				<div class="elementor-widget-container">
 															<img src="images/audax-logo.png" alt="Audax Implementação" style="max-width: 100%; height: auto;" />															</div>
 				</div>
-				<div id="audax-form-header" class="elementor-element elementor-element-6bc57aee elementor-widget elementor-widget-heading" data-id="6bc57aee" data-element_type="widget" data-widget_type="heading.default">
+				<div id="audax-form-header" style="position:relative;" class="elementor-element elementor-element-6bc57aee elementor-widget elementor-widget-heading" data-id="6bc57aee" data-element_type="widget" data-widget_type="heading.default">
 				<div class="elementor-widget-container">
-					<h2 class="elementor-heading-title elementor-size-default">Preencha seus dados abaixo</h2>				</div>
+					<h2 class="elementor-heading-title elementor-size-default">Preencha seus dados abaixo</h2>
+					<button type="button" onclick="audaxClosePopup()" style="position:absolute;top:-20px;right:-10px;background:transparent;border:none;color:#fff;font-size:28px;cursor:pointer;padding:10px;line-height:1;">&times;</button>
+				</div>
 				</div>
 				<div class="elementor-element elementor-element-47bed860 elementor-widget" data-id="47bed860" data-element_type="widget">
 				<div class="elementor-widget-container">
@@ -398,7 +400,7 @@ Tem a agenda cheia e ganha bem, mas percebe que está preso(a) à própria rotin
 				<form id="audax-form" style="display:flex;flex-direction:column;gap:12px;">
 					<input type="text" id="audax-nome" placeholder="Nome completo" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 					
-					<input type="tel" id="audax-whatsapp" placeholder="Seu WhatsApp com DDD" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
+					<input type="tel" id="audax-whatsapp" placeholder="WhatsApp (DDD + Número)" inputmode="numeric" maxlength="15" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 
 					<input type="text" id="audax-instagram" placeholder="Seu @ no Instagram" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
 					<input type="email" id="audax-email" placeholder="Seu melhor e-mail" required style="width:100%;padding:12px 16px;border-radius:4px;border:1px solid #555;background:#1a1a1a;color:#fff;font-size:16px !important;box-sizing:border-box;touch-action:manipulation;">
@@ -605,6 +607,12 @@ document.addEventListener('click', function(e) {
 const AUDAX_WA_NUMBER = '5521996768132';
 const AUDAX_FORMINIT_URL = 'https://forminit.com/f/xuln4myvz9f';
 
+// Formata número de WhatsApp ao digitar
+document.getElementById('audax-whatsapp').addEventListener('input', function (e) {
+  var x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+  e.target.value = !x[2] ? x[1] : x[1] + (x[2] ? ' ' + x[2] : '') + (x[3] ? '-' + x[3] : '');
+});
+
 // Use event delegation to ensure event listeners work even if the popup is re-rendered
 document.addEventListener('submit', async function(e) {
   if (e.target && e.target.id === 'audax-form') {
@@ -655,13 +663,11 @@ document.addEventListener('submit', async function(e) {
 
     // Monta mensagem WhatsApp
     const msg = [
-      '*IMPLEMENTAÇÃO AUDAX – NOVA APLICAÇÃO*',
+      'Olá vim do site e quero saber mais sobre a implementação audax, esses sao meus dados',
       '',
-      `*Nome:* ${nome}`,
-      `*WhatsApp:* ${whatsapp}`,
-      `*Instagram:* ${instagram}`,
-      `*E-mail:* ${email}`,
-      `*Faturamento mensal:* ${faturamento}`
+      `Nome: ${nome}`,
+      `Instagram: ${instagram}`,
+      `Faturamento: ${faturamento}`
     ].join('\n');
 
     const waUrl = `https://wa.me/${AUDAX_WA_NUMBER}?text=${encodeURIComponent(msg)}`;
